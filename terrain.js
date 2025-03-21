@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
-import SimplexNoise from 'https://cdn.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.js';
+import { SimplexNoise } from 'https://cdn.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.js';
 
 export class Terrain {
     constructor(scene, world, size, resolution, maxHeight) {
@@ -289,4 +289,3 @@ export class Terrain {
         }
     }
 }
-
