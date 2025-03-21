@@ -284,11 +284,11 @@ export class City {
         
         // Try to find a road cell
         let attempts = 0;
-        let x, z;
+        let i, j, x, z;
         
         do {
-            const i = Math.floor(Math.random() * gridSize);
-            const j = Math.floor(Math.random() * gridSize);
+            i = Math.floor(Math.random() * gridSize);
+            j = Math.floor(Math.random() * gridSize);
             
             x = (i - gridSize / 2) * cellSize;
             z = (j - gridSize / 2) * cellSize;
@@ -309,4 +309,3 @@ export class City {
         );
     }
 }
-
