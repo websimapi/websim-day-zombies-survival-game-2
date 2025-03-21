@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
-import SimplexNoise from 'https://cdn.jsdelivr.net/npm/simplex-noise@2.4.0/dist/simplex-noise-esm.js';
+import { createNoise2D } from 'https://cdn.jsdelivr.net/npm/simplex-noise@4.0.1/dist/esm/simplex-noise.js';
 
 export class Terrain {
     constructor(scene, world, size, resolution, maxHeight) {
@@ -12,7 +12,8 @@ export class Terrain {
         this.loaded = false;
         this.readyCallbacks = [];
         
-        this.simplex = new SimplexNoise();
+        // Create a 2D noise function instead of the SimplexNoise instance
+        this.noise2D = createNoise2D();
         
         // Store terrain data
         this.heightData = [];
@@ -94,8 +95,8 @@ export class Terrain {
                     const nx = i / this.resolution * frequency;
                     const ny = j / this.resolution * frequency;
                     
-                    // Add noise contribution
-                    height += this.simplex.noise2D(nx, ny) * amplitude;
+                    // Use noise2D function instead of simplex.noise2D
+                    height += this.noise2D(nx, ny) * amplitude;
                     
                     // Lacunarity - increase frequency with each octave
                     frequency *= 2;
